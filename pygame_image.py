@@ -3,11 +3,12 @@ import sys
 import pygame as pg
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
-FPS = 200
+
 
 def main():
     pg.display.set_caption("はばたけ！こうかとん")
     screen = pg.display.set_mode((800, 600))
+    pg.fps = 200
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")
     tmr = 0
@@ -17,10 +18,12 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [0, 0])
-        # for i in range(0,800):
-        #     screen.blit(koukaton,[i,200])
-        #     pg.display.update()
+        screen.blit(bg_img, [-tmr, 0])
+        screen.blit(koukaton,[300,200])
+        
+        pg.display.update()
+        if tmr == 800:
+            tmr ==0
         tmr += 1        
         clock.tick(200)
 
