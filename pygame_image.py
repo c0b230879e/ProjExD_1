@@ -16,20 +16,32 @@ def main():
     koukaton_rct.center = (300, 200)
 
     tmr = 0
+    
 
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 return
+
         key_lst = pg.key.get_pressed()
+
+
+        move_x, move_y = -1, 0 
         if key_lst[pg.K_UP]:
-            koukaton_rct.move_ip(0,-1)
+            move_y = -1
         if key_lst[pg.K_DOWN]:
-            koukaton_rct.move_ip(0, 1)
+            move_y = 1
         if key_lst[pg.K_LEFT]:
-            koukaton_rct.move_ip(-1, 0)
+            move_x = -1
         if key_lst[pg.K_RIGHT]:
-            koukaton_rct.move_ip(1, 0)
+            move_x = 1
+        koukaton_rct.move_ip(move_x, move_y)
+
+
+
+
+
+
 
         x = tmr % 3200
         screen.blit(bg_img, [-x, 0])
